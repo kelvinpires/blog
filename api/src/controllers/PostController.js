@@ -45,7 +45,9 @@ module.exports = {
   async updatePost(req, res) {
     const { postId } = req.params;
 
-    const updatedPost = await Post.findByIdAndUpdate(postId, { ...req.body });
+    const updatedPost = await Post.findByIdAndUpdate(postId, {
+      $set: req.body,
+    });
 
     try {
       const savedPost = await updatedPost.save();
