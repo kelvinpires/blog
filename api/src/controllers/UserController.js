@@ -90,4 +90,24 @@ module.exports = {
         .json({ message: "Algo Aconteceu. Tente novamente mais tarde." });
     }
   },
+  async updateUser(req, res) {
+    if (req.user) {
+      const user = await User.findByIdAndUpdate(req.user.id, {
+        $set: req.body,
+      });
+      try {
+        const savedUser = await user.save();
+
+        return res
+          .status(202)
+          .json({ message: "Seus dados foram atualizados.", user: savedUser });
+      } catch (err) {
+        return res
+          .status(500)
+          .json({ message: "Algo Aconteceu. Tente novamente mais tarde." });
+      }
+    } else {
+      return res.status(401).json({ message: "Você não tem autorização." });
+    }
+  },
 };
