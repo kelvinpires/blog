@@ -12,6 +12,23 @@ module.exports = {
         .json({ message: "Algo aconteceu. Tente novamente mais tarde." });
     }
   },
+  async getPost(req, res) {
+    const { postId } = req.params;
+
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post não encontrado." });
+    }
+
+    try {
+      return res.status(200).json({ post: post });
+    } catch (err) {
+      return res
+        .status(500)
+        .json({ message: "Algo aconteceu. Tente novamente mais tarde." });
+    }
+  },
   async queryPost(req, res) {
     const { title } = req.query;
     const searchQuery = title.split(" ");

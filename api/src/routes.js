@@ -5,6 +5,7 @@ const verifyToken = require("./verifyToken");
 
 // posts
 route.get("/posts", PostController.showPosts);
+route.get("/posts/:postId", PostController.getPost);
 route.post("/posts/search", PostController.queryPost);
 route.post("/posts/create", verifyToken, PostController.createPost);
 route.put("/posts/update/:postId", verifyToken, PostController.updatePost);
