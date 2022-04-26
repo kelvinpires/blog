@@ -30,7 +30,7 @@ module.exports = {
         return;
       });
 
-      return res.status(200).json({ posts: posts.reverse() });
+      return res.status(302).json({ posts: posts.reverse() });
     } catch (err) {
       return res
         .status(500)
@@ -67,6 +67,8 @@ module.exports = {
           .status(500)
           .json({ message: "Algo aconteceu. Tente novamente mais tarde." });
       }
+    } else {
+      return res.status(401).json({ message: "Você não tem autorização." });
     }
   },
   async updatePost(req, res) {
@@ -81,13 +83,15 @@ module.exports = {
         const savedPost = await updatedPost.save();
 
         return res
-          .status(200)
+          .status(202)
           .json({ message: "Post atualizado com sucesso.", post: savedPost });
       } catch (error) {
         return res
           .status(500)
           .json({ message: "Algo aconteceu. Tente novamente mais tarde." });
       }
+    } else {
+      return res.status(401).json({ message: "Você não tem autorização." });
     }
   },
   async deletePost(req, res) {
@@ -97,12 +101,14 @@ module.exports = {
       try {
         await Post.findByIdAndRemove(postId);
 
-        return res.status(200).json({ message: "Post deletado com sucesso." });
+        return res.status(202).json({ message: "Post deletado com sucesso." });
       } catch (err) {
         return res
           .status(500)
           .json({ message: "Algo aconteceu. Tente novamente mais tarde." });
       }
+    } else {
+      return res.status(401).json({ message: "Você não tem autorização." });
     }
   },
 };
