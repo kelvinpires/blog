@@ -17,9 +17,10 @@ module.exports = {
         .json({ message: "Todas as informações são necessárias." });
     }
 
-    const haveUser = await User.findOne({ email });
+    const haveUserEmail = await User.findOne({ email });
+    const haveUsername = await User.findOne({ username });
 
-    if (haveUser) {
+    if (haveUserEmail || haveUsername) {
       return res
         .status(400)
         .json({ message: "Nome de usuário ou email já existe." });
