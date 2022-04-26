@@ -92,7 +92,7 @@ module.exports = {
   },
   async updateUser(req, res) {
     if (req.user) {
-      const user = await User.findByIdAndUpdate(req.user.id, {
+      const user = await User.findByIdAndUpdate(req.params.userId, {
         $set: req.body,
       });
       try {
@@ -101,6 +101,20 @@ module.exports = {
         return res
           .status(202)
           .json({ message: "Seus dados foram atualizados.", user: savedUser });
+      } catch (err) {
+        return res
+          .status(500)
+          .json({ message: "Algo Aconteceu. Tente novamente mais tarde." });
+      }
+    } else {
+      return res.status(401).json({ message: "Você não tem autorização." });
+    }
+  },
+  async deleteUser(req, res) {
+    if (req.user) {
+      try {
+        await User.findByIdAndRemove(req.params.userId);
+        return res.status(202).json({ message: "Seus dados foram removidos." });
       } catch (err) {
         return res
           .status(500)

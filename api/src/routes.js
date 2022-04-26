@@ -16,5 +16,7 @@ route.delete("/posts/delete/:postId", verifyToken, PostController.deletePost);
 route.post("/user/signup", UserController.signup);
 route.post("/user/login", UserController.login);
 route.get("/user", UserController.showUsers);
+route.put("/user/edit/:userId", verifyToken, UserController.updateUser);
+route.delete("/user/delete/:userId", verifyToken, UserController.deleteUser);
 
 module.exports = route;
