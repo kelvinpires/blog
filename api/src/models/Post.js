@@ -14,11 +14,12 @@ const PostSchema = new mongoose.Schema(
     image: {
       type: String,
       required: true,
-      default: "",
+      default: null,
     },
     video: {
       type: String,
       required: false,
+      default: null,
     },
     userId: {
       type: String,
