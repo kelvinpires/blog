@@ -15,7 +15,6 @@ export const Login = () => {
     <LoginContainer>
       <LoginWrapper>
         <LoginH2>Personal Blog</LoginH2>
-        <hr />
         <LoginForm>
           <FormGroup>
             <Label htmlFor="email">Email</Label>

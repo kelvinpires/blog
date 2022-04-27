@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LoginContainer = styled.div`
-  background-color: #c9c9c9;
+  background-color: #c9c9c980;
   display: flex;
   align-items: center;
   justify-content: center;
