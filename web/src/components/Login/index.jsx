@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { login } from "../../context/AuthContext/apiCalls";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
 import {
   Button,
   FormGroup,
@@ -11,6 +13,17 @@ import {
 } from "./styles";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { dispatch } = useContext(AuthContext);
+
+  const submitLogin = (e) => {
+    e.preventDefault();
+
+    login({ email, password }, dispatch);
+  };
+
   return (
     <LoginContainer>
       <LoginWrapper>
@@ -24,6 +37,7 @@ export const Login = () => {
               name="email"
               id="email"
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
           </FormGroup>
           <FormGroup>
@@ -34,9 +48,12 @@ export const Login = () => {
               name="password"
               id="password"
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
           </FormGroup>
-          <Button type="submit">Entrar</Button>
+          <Button onClick={submitLogin} type="submit">
+            Entrar
+          </Button>
         </LoginForm>
       </LoginWrapper>
     </LoginContainer>
