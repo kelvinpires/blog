@@ -124,4 +124,18 @@ module.exports = {
       return res.status(401).json({ message: "Você não tem autorização." });
     }
   },
+  async verifyAuth(req, res) {
+    const { token } = req.params;
+
+    try {
+      jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+        if (err) {
+          return res.status(401).json("Token not valid");
+        }
+        return res.status(200).json({ user: decoded });
+      });
+    } catch (err) {
+      res.status(500).json({ error: "Algo deu errado." });
+    }
+  },
 };

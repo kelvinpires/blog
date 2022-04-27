@@ -16,6 +16,7 @@ route.delete("/posts/delete/:postId", verifyToken, PostController.deletePost);
 route.post("/user/signup", UserController.signup);
 route.post("/user/login", UserController.login);
 route.get("/user", UserController.showUsers);
+route.get("/user/verify/:token", UserController.verifyAuth);
 route.put("/user/edit/:userId", verifyToken, UserController.updateUser);
 route.delete("/user/delete/:userId", verifyToken, UserController.deleteUser);
 
