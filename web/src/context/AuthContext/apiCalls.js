@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess } from "./AuthActions";
+import { loginFailure, loginStart, loginSuccess, logout } from "./AuthActions";
 import { api } from "../api";
 
 export const login = async (user, dispatch) => {
@@ -17,6 +17,6 @@ export const login = async (user, dispatch) => {
   }
 };
 
-export const logout = (dispatch) => {
-  dispatch(loginFailure);
+export const handleLogout = (dispatch) => {
+  dispatch(logout);
 };

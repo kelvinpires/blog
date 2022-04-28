@@ -25,3 +25,8 @@ export const signupFailure = () => ({
   type: "LOGIN_FAILURE",
   payload: null,
 });
+
+export const logout = () => ({
+  type: "LOGOUT",
+  payload: null,
+});

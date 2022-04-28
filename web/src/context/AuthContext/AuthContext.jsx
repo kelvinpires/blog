@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { api } from "../api";
-import { logout } from "./apiCalls";
+import { handleLogout } from "./apiCalls";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
@@ -24,17 +24,13 @@ export const AuthProvider = ({ children }) => {
         const res = await api.get(`/user/verify/${state.user.accessToken}`);
         const data = await res.data;
 
-        console.log(data);
-
         const isExpired = data.user?.exp * 1000 < dateNow.getTime();
 
         if (isExpired) {
-          logout(dispatch);
-        } else {
-          console.log("Verificação em dia.");
+          handleLogout(dispatch);
         }
       } catch (err) {
-        logout(dispatch);
+        handleLogout(dispatch);
       }
     }
   }
