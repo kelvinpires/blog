@@ -9,7 +9,6 @@ export const loginSuccess = (user) => ({
 
 export const loginFailure = () => ({
   type: "LOGIN_FAILURE",
-  payload: null,
 });
 
 export const signupStart = () => ({
@@ -28,5 +27,4 @@ export const signupFailure = () => ({
 
 export const logout = () => ({
   type: "LOGOUT",
-  payload: null,
 });

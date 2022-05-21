@@ -1,10 +1,13 @@
 import { createContext, useEffect, useReducer } from "react";
-import { api } from "../api";
-import { handleLogout } from "./apiCalls";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  user: localStorage.user ? JSON.parse(localStorage.user) : null,
+  user_id: localStorage.user_id ? JSON.parse(localStorage.user_id) : null,
+  auth_token: localStorage.auth_token
+    ? JSON.parse(localStorage.auth_token)
+    : null,
+  isFetching: false,
+  error: false,
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -13,34 +16,20 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(state.user));
+    localStorage.setItem("user_id", JSON.stringify(state.user_id));
+    localStorage.setItem("auth_token", JSON.stringify(state.auth_token));
   }, [state]);
 
-  async function verifyUser() {
-    if (state.user) {
-      try {
-        const dateNow = new Date();
-
-        const res = await api.get(`/user/verify/${state.user.accessToken}`);
-        const data = await res.data;
-
-        const isExpired = data.user?.exp * 1000 < dateNow.getTime();
-
-        if (isExpired) {
-          handleLogout(dispatch);
-        }
-      } catch (err) {
-        handleLogout(dispatch);
-      }
-    }
-  }
-
-  useEffect(() => {
-    verifyUser();
-  }, []);
-
   return (
-    <AuthContext.Provider value={{ user: state.user, dispatch }}>
+    <AuthContext.Provider
+      value={{
+        user_id: state.user_id,
+        auth_token: state.auth_token,
+        isFetching: state.isFetching,
+        error: state.error,
+        dispatch,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
