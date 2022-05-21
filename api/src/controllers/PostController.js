@@ -15,13 +15,12 @@ module.exports = {
   async getPost(req, res) {
     const { postId } = req.params;
 
-    const post = await Post.findById(postId);
-
-    if (!post) {
-      return res.status(404).json({ message: "Post não encontrado." });
-    }
-
     try {
+      const post = await Post.findOne({ _id: postId });
+
+      if (!post) {
+        return res.status(404).json({ message: "Post não encontrado." });
+      }
       return res.status(200).json({ post: post });
     } catch (err) {
       return res
@@ -47,7 +46,7 @@ module.exports = {
         return;
       });
 
-      return res.status(302).json({ posts: posts.reverse() });
+      return res.status(200).json({ posts: posts.reverse() });
     } catch (err) {
       return res
         .status(500)
