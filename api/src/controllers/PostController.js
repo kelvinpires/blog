@@ -53,6 +53,19 @@ module.exports = {
         .json({ error: "Algo deu errado. Tente novamente mais tarde." });
     }
   },
+  async getUserPosts(req, res) {
+    const { userId } = req.params;
+
+    const userPosts = await Post.find({ userId: userId });
+
+    try {
+      return res.status(200).json({ posts: userPosts });
+    } catch (err) {
+      return res
+        .status(500)
+        .json({ message: "Algo aconteceu. Tente novamente mais tarde." });
+    }
+  },
   async createPost(req, res) {
     if (req.user) {
       const { title } = req.body;

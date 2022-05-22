@@ -8,6 +8,22 @@ module.exports = {
 
     return res.status(200).json({ users: users });
   },
+  async showUser(req, res) {
+    const { userId } = req.params;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "Usuário não encontrado." });
+    }
+
+    try {
+      return res.status(200).json({ user: user });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ error: "Algo aconteceu. Tente novamente mais tarde." });
+    }
+  },
   async signup(req, res) {
     const { username, email, password } = req.body;
 
