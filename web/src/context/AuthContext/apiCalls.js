@@ -1,10 +1,13 @@
 import { loginFailure, loginStart, loginSuccess, logout } from "./AuthActions";
 import { api } from "../../lib/api";
 
-export const login = async (userInfo, dispatch) => {
+export const login = async (userInfo, dispatch, setError) => {
   dispatch(loginStart());
+
   try {
-    const res = await api.post("/user/login", userInfo);
+    const res = await api
+      .post("/user/login", userInfo)
+      .catch((err) => setError(err.response.data.error));
     const data = await res.data.user;
     dispatch(loginSuccess(data));
     location.href = "https://blog-kelvinpires.vercel.app/";

@@ -10,6 +10,8 @@ import {
   AuthSubmitButton,
   SignupLink,
   Strong,
+  AuthFailureContainer,
+  AuthFailureText,
 } from "../../components/AuthStyles/styles";
 import { login } from "../../context/AuthContext/apiCalls";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
@@ -18,19 +20,13 @@ import { FaCircleNotch } from "react-icons/fa";
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const { isFetching, error, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    try {
-      login({ email, password }, dispatch);
-    } catch (err) {
-      if (error) {
-        alert("Algo deu errado. Tente novamente ou insira novas informações.");
-        location.reload();
-      }
-    }
+    login({ email, password }, dispatch, setError);
   };
 
   return (
@@ -41,7 +37,10 @@ export const LoginPage = () => {
           <InputBox>
             <Label htmlFor="email">Email</Label>
             <AuthInput
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
               type="email"
               name="email"
               id="email"
@@ -52,7 +51,10 @@ export const LoginPage = () => {
           <InputBox>
             <Label htmlFor="password">Senha</Label>
             <AuthInput
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
               type="password"
               name="password"
               id="password"
@@ -60,6 +62,11 @@ export const LoginPage = () => {
               required
             />
           </InputBox>
+          {error && (
+            <AuthFailureContainer>
+              <AuthFailureText>{error}</AuthFailureText>
+            </AuthFailureContainer>
+          )}
           <AuthSubmitButton
             disabled={isFetching}
             type="submit"

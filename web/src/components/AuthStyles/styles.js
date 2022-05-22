@@ -102,3 +102,20 @@ export const SignupLink = styled(Link)`
 `;
 
 export const Strong = styled.strong``;
+
+export const AuthFailureContainer = styled.div`
+  width: 100%;
+  height: 4rem;
+  background-color: #ed254e50;
+  border: 0.1rem solid #ed254e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const AuthFailureText = styled.p`
+  font-size: 1.6rem;
+  color: var(--light-purple);
+  text-shadow: 0.1rem 0.1rem 0.1em var(--dark-bg);
+  font-family: "Roboto", sans-serif;
+`;
