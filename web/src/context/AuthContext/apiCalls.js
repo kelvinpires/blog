@@ -7,7 +7,7 @@ export const login = async (userInfo, dispatch) => {
     const res = await api.post("/user/login", userInfo);
     const data = await res.data.user;
     dispatch(loginSuccess(data));
-    location.href = "http://localhost:3000/";
+    location.href = "https://blog-kelvinpires.vercel.app/";
   } catch (err) {
     dispatch(loginFailure());
   }
