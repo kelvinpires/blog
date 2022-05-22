@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<AllPostsPage />} />
-          <Route path="/search*" element={<AllPostsPage />} />
+          <Route path="/search" element={<AllPostsPage />} />
           <Route path="/post/:postId" element={<PostPage />} />
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/signup" element={<SignupPage />} />
