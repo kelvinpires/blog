@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { PostTitle } from "../../components/HomePosts/styles";
 import {
   InputBox,
@@ -15,7 +15,7 @@ import {
 } from "../../components/AuthStyles/styles";
 import { login } from "../../context/AuthContext/apiCalls";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
-import { FaCircleNotch } from "react-icons/fa";
+import { CircleNotch } from "phosphor-react";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -73,7 +73,12 @@ export const LoginPage = () => {
             onClick={handleLoginSubmit}
           >
             {isFetching ? (
-              <FaCircleNotch style={{ animation: "load 1s infinite linear" }} />
+              <CircleNotch
+                size={16}
+                color="#f6f6ff"
+                weight="bold"
+                style={{ animation: "load 1s infinite linear" }}
+              />
             ) : (
               "Entrar"
             )}

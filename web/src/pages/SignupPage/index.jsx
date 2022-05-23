@@ -12,9 +12,9 @@ import {
   SignupLink,
 } from "../../components/AuthStyles/styles";
 import { PostTitle } from "../../components/HomePosts/styles";
-import { FaCircleNotch } from "react-icons/fa";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import { signup } from "../../context/AuthContext/apiCalls";
+import { CircleNotch } from "phosphor-react";
 
 export const SignupPage = () => {
   const { isFetching, dispatch } = useContext(AuthContext);
@@ -102,7 +102,12 @@ export const SignupPage = () => {
           )}
           <AuthSubmitButton type="submit" onClick={handleSignupSubmit}>
             {isFetching ? (
-              <FaCircleNotch style={{ animation: "load 1s infinite linear" }} />
+              <CircleNotch
+                size={16}
+                color="#f6f6ff"
+                weight="bold"
+                style={{ animation: "load 1s infinite linear" }}
+              />
             ) : (
               "Criar nova conta"
             )}
