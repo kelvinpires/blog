@@ -1,7 +1,7 @@
 import React from "react";
 import { AllRights, BackTop, FooterContainer, LogoHome } from "./styles";
-import { FaArrowUp } from "react-icons/fa";
 import LogoImg from "../../assets/images/logo.svg";
+import { ArrowUp } from "phosphor-react";
 
 export const Footer = () => {
   const handleScroll = () => {
@@ -13,7 +13,7 @@ export const Footer = () => {
       <LogoHome src={LogoImg} />
       <AllRights>&copy; The Blog - Todos os direitos reservados.</AllRights>
       <BackTop title="Voltar para o topo" onClick={handleScroll}>
-        <FaArrowUp color="black" size="1.6rem" />
+        <ArrowUp size={16} color="#f6f6ff" weight="bold" />
       </BackTop>
     </FooterContainer>
   );

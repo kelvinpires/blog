@@ -1,5 +1,5 @@
+import { MagnifyingGlass } from "phosphor-react";
 import React, { useContext, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 
 import LogoImg from "../../assets/images/logo.svg";
 import { handleLogout } from "../../context/AuthContext/apiCalls";
@@ -79,7 +79,7 @@ export const Header = () => {
           <SearchForm action="/search">
             <SearchInput name="title" type="search" placeholder="Buscar" />
             <SearchButton type="Submit">
-              <FaSearch color="white" size="1.8rem" />
+              <MagnifyingGlass size={16} color="#f6f6ff" weight="bold" />
             </SearchButton>
           </SearchForm>
         </SearchContainer>
