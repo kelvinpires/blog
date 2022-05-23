@@ -39,7 +39,7 @@ module.exports = {
     if (haveUserEmail || haveUsername) {
       return res
         .status(400)
-        .json({ message: "Nome de usuário ou email já existe." });
+        .json({ message: "Nome de usuário e/ou email já existem." });
     }
 
     const passCrypted = CryptoJS.AES.encrypt(
@@ -77,7 +77,7 @@ module.exports = {
       const haveUser = await User.findOne({ email: email });
 
       if (!haveUser) {
-        return res.status(404).json({ error: "Email ou senha incorretos." });
+        return res.status(404).json({ message: "Email ou senha incorretos." });
       }
 
       const bytes = CryptoJS.AES.decrypt(
