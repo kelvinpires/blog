@@ -12,17 +12,15 @@ export const loginFailure = () => ({
 });
 
 export const signupStart = () => ({
-  type: "LOGIN_START",
+  type: "SIGNUP_START",
 });
 
-export const signupSuccess = (user) => ({
-  type: "LOGIN_SUCCESS",
-  payload: user,
+export const signupSuccess = () => ({
+  type: "SIGNUP_SUCCESS",
 });
 
 export const signupFailure = () => ({
-  type: "LOGIN_FAILURE",
-  payload: null,
+  type: "SIGNUP_FAILURE",
 });
 
 export const logout = () => ({

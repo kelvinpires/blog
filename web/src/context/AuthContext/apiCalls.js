@@ -1,5 +1,29 @@
-import { loginFailure, loginStart, loginSuccess, logout } from "./AuthActions";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+  logout,
+  signupStart,
+  signupSuccess,
+  signupFailure,
+} from "./AuthActions";
 import { api } from "../../lib/api";
+
+export const signup = async (userInfo, dispatch, setError) => {
+  dispatch(signupStart());
+
+  try {
+    const res = await api
+      .post("/user/signup", userInfo)
+      .catch((err) => setError(err.response.data.message));
+    const message = await res.data.message;
+    dispatch(signupSuccess());
+    alert(message);
+    location.href = "https://blog-kelvinpires.vercel.app/auth/login";
+  } catch (err) {
+    dispatch(signupFailure());
+  }
+};
 
 export const login = async (userInfo, dispatch, setError) => {
   dispatch(loginStart());
@@ -7,7 +31,7 @@ export const login = async (userInfo, dispatch, setError) => {
   try {
     const res = await api
       .post("/user/login", userInfo)
-      .catch((err) => setError(err.response.data.error));
+      .catch((err) => setError(err.response.data.message));
     const data = await res.data.user;
     dispatch(loginSuccess(data));
     location.href = "https://blog-kelvinpires.vercel.app/";

@@ -21,6 +21,27 @@ export default (state, action) => {
         auth_token: null,
         error: true,
       };
+    case "SIGNUP_START":
+      return {
+        isFetching: true,
+        error: false,
+        user_id: null,
+        auth_token: null,
+      };
+    case "SIGNUP_SUCCESS":
+      return {
+        isFetching: false,
+        error: false,
+        user_id: null,
+        auth_token: null,
+      };
+    case "SIGNUP_FAILURE":
+      return {
+        isFetching: false,
+        error: true,
+        user_id: null,
+        auth_token: null,
+      };
     case "LOGOUT":
       return {
         isFetching: false,
