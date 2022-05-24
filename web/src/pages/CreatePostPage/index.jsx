@@ -198,7 +198,7 @@ export const CreatePostPage = () => {
         {postId && success && (
           <a
             style={{ fontSize: "2rem", width: "100%", textAlign: "center" }}
-            href={`http://localhost:3000/post/${postId}`}
+            href={`https://blog-kelvinpires.vercel.app/post/${postId}`}
           >
             {success}
           </a>
