@@ -1,5 +1,5 @@
+import { ArrowRight } from "phosphor-react";
 import React, { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
 import { getAllPosts } from "../../context/PostContext/apiCalls";
 import { SeeMoreLink } from "../HomePosts/styles";
 import {
@@ -33,7 +33,7 @@ export const HomePrincipalPost = () => {
                 : posts[0]?.text}
             </MainTextDescription>
             <SeeMoreLink to={`/post/${posts[0]?._id}`}>
-              Veja mais <FaArrowRight size="1.8rem" color="#4fff4b" />
+              Veja mais <ArrowRight size={32} color="#4fff4b" />
             </SeeMoreLink>
           </MainTextContainer>
           <SeeMoreLink to={`/post/${posts[0]?._id}`}>

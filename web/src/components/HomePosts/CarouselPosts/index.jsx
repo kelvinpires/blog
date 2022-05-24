@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getAllPosts } from "../../../context/PostContext/apiCalls";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import {
   PostTitle,
   PostData,
@@ -17,6 +16,7 @@ import {
   ButtonSlide,
   CarouselContentSlide,
 } from "./styles";
+import { ArrowLeft, ArrowRight } from "phosphor-react";
 
 export const CarouselPosts = () => {
   const [carouselPosts, setCarouselPosts] = useState([]);
@@ -41,7 +41,7 @@ export const CarouselPosts = () => {
   return (
     <CarouselContainer>
       <ButtonSlide onClick={handleSlideLeft} style={{ left: 0 }}>
-        <FaArrowLeft size="3rem" color="white" />
+        <ArrowLeft size={28} color="#ffffff" />
       </ButtonSlide>
       <CarouselContentSlide ref={carousel}>
         {carouselPosts && (
@@ -70,7 +70,7 @@ export const CarouselPosts = () => {
           </CarouselContent>
         )}
         <ButtonSlide onClick={handleSlideRight} style={{ right: 0 }}>
-          <FaArrowRight size="3rem" color="white" />
+          <ArrowRight size={28} color="#ffffff" />
         </ButtonSlide>
       </CarouselContentSlide>
     </CarouselContainer>

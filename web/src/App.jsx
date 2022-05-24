@@ -11,6 +11,7 @@ import { SignupPage } from "./pages/SignupPage";
 import { useContext, useEffect } from "react";
 import { verifyUser } from "./context/AuthContext/apiCalls";
 import { AuthContext } from "./context/AuthContext/AuthContext";
+import { CreatePostPage } from "./pages/CreatePostPage";
 
 function App() {
   const { user_id, dispatch } = useContext(AuthContext);
@@ -31,6 +32,7 @@ function App() {
           <Route path="/post/:postId" element={<PostPage />} />
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/signup" element={<SignupPage />} />
+          <Route path="/painel" element={<CreatePostPage />} />
           <Route path="/*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>

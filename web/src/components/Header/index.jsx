@@ -79,7 +79,7 @@ export const Header = () => {
           <SearchForm action="/search">
             <SearchInput name="title" type="search" placeholder="Buscar" />
             <SearchButton type="Submit">
-              <MagnifyingGlass size={16} color="#f6f6ff" weight="bold" />
+              <MagnifyingGlass size={20} color="#f6f6ff" weight="duotone" />
             </SearchButton>
           </SearchForm>
         </SearchContainer>

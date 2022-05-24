@@ -13,7 +13,7 @@ export const Footer = () => {
       <LogoHome src={LogoImg} />
       <AllRights>&copy; The Blog - Todos os direitos reservados.</AllRights>
       <BackTop title="Voltar para o topo" onClick={handleScroll}>
-        <ArrowUp size={16} color="#f6f6ff" weight="bold" />
+        <ArrowUp size={32} color="#fff" />
       </BackTop>
     </FooterContainer>
   );
