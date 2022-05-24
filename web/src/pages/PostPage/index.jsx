@@ -9,6 +9,7 @@ import {
   PostPageImg,
   PostText,
   PostDataContent,
+  PostVideo,
 } from "./styles";
 
 export const PostPage = () => {
@@ -51,7 +52,10 @@ export const PostPage = () => {
                   title={post.title}
                 />
               </PostPageImageContainer>
-              <PostText>{post.text}</PostText>
+              {post.text.split("\n").map((text, i) => (
+                <PostText key={i}>{text}</PostText>
+              ))}
+              {post.video && <PostVideo src={post.video} controls></PostVideo>}
             </PostPageContent>
           </PostPageContainer>
         </>

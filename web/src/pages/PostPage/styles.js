@@ -14,7 +14,7 @@ export const PostPageContent = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   width: 100%;
 `;
@@ -29,6 +29,11 @@ export const PostPageImg = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 0.8rem;
+`;
+
+export const PostVideo = styled.video`
+  width: 100%;
+  max-height: 40rem;
 `;
 
 export const PostDataContent = styled.div`

@@ -24,3 +24,24 @@ export const getPost = async (title, setPost) => {
     return (location.href = "http://localhost:3000/404");
   }
 };
+
+export const createPost = async (
+  auth_token,
+  postInfo,
+  setPostId,
+  setError,
+  setSuccess
+) => {
+  const res = await api
+    .post("/posts/create", postInfo, {
+      headers: {
+        token: `Bearer ${auth_token}`,
+      },
+    })
+    .catch((err) => setError(err.response.data));
+  console.log(res);
+
+  const data = await res.data.post;
+  setSuccess(res.data.message);
+  setPostId(data._id);
+};
