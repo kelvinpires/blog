@@ -8,12 +8,19 @@ export const NewPostContent = styled.div`
   justify-content: center;
   gap: 0.8rem;
   width: 50rem;
+  @media screen and (max-width: 890px) {
+    width: 100%;
+  }
 `;
 
 export const NewPostImageContainer = styled.div`
   width: auto;
   height: 30rem;
   border-radius: 0.8rem;
+  @media screen and (max-width: 890px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 export const NewPostImageContent = styled.div`
   width: 100%;

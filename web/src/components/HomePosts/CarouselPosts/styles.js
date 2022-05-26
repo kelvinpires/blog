@@ -25,6 +25,9 @@ export const CarouselItem = styled.div`
   align-items: flex-start;
   gap: 1rem;
   width: 30rem;
+  @media screen and (max-width: 890px) {
+    width: 25rem;
+  }
 `;
 
 export const CarouselImageContainer = styled.div`
@@ -55,4 +58,8 @@ export const ButtonSlide = styled.button`
   height: 5rem;
   z-index: 999;
   cursor: pointer;
+  @media screen and (max-width: 425px) {
+    width: 8rem;
+    height: 8rem;
+  }
 `;

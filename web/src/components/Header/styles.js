@@ -5,28 +5,83 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem 10rem 3rem 10rem;
+  padding: 6rem 5rem 3rem 5rem;
   background-color: var(--purple-bg);
   gap: 1rem;
+  width: 100%;
 `;
 
 export const LogoLink = styled(Link)`
   text-decoration: none;
+  @media screen and (max-width: 940px) {
+    img {
+      width: 15rem;
+    }
+  }
 `;
 
 export const Logo = styled.img``;
 
-export const MenuContainer = styled.div``;
+export const MenuHamburgerContainer = styled.div`
+  display: none;
+  @media screen and (max-width: 830px) {
+    display: block;
+    z-index: 11;
+  }
+`;
+
+export const MenuHamburgerDiv = styled.div`
+  width: 4rem;
+  height: 0.6rem;
+  background-color: var(--white);
+  margin: 0.5rem 0;
+  border-radius: 0.3rem;
+  transition: 0.3s ease-in;
+
+  &.on {
+    opacity: 0;
+    &:first-child {
+      transform: rotate(45deg) translate(0.7rem, 0.7rem);
+      opacity: 1;
+    }
+    &:last-child {
+      transform: rotate(-45deg) translate(0.7rem, -0.9rem);
+      opacity: 1;
+    }
+  }
+`;
+
+export const MenuContainer = styled.div`
+  @media screen and (max-width: 830px) {
+    display: none;
+    &.on {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--button-bg);
+      z-index: 10;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+`;
 
 export const MenuUl = styled.ul`
   list-style: none;
   display: flex;
   align-items: center;
   gap: 3rem;
+  @media screen and (max-width: 830px) {
+    display: block;
+    line-height: 8rem;
+  }
 `;
 
 export const MenuLi = styled.li`
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
 
@@ -36,6 +91,9 @@ export const MenuLi = styled.li`
 
   &:hover {
     color: var(--green);
+  }
+  @media screen and (max-width: 830px) {
+    font-size: 5rem;
   }
 `;
 
@@ -72,6 +130,9 @@ export const MenuCategoriesLi = styled(MenuLi)`
   font-size: 2rem;
   padding: 0 1rem;
   width: 100%;
+  @media screen and (max-width: 830px) {
+    font-size: 5rem;
+  }
 `;
 
 export const MenuCategoriesLink = styled(MenuLink)`

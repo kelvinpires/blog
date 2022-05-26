@@ -58,3 +58,16 @@ export async function verifyUser(dispatch) {
     return handleLogout(dispatch);
   }
 }
+
+export const getUserInfo = async (userId, auth_token, setUser) => {
+  const res = await api
+    .get(`/user/${userId}`, {
+      headers: {
+        token: `Bearer ${auth_token}`,
+      },
+    })
+    .catch((err) => alert(err.response.data.error));
+  const data = await res.data.user;
+
+  setUser(data);
+};

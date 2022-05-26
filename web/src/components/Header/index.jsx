@@ -21,14 +21,27 @@ import {
   MenuCategoriesLink,
   LoginBtn,
   LogoutBtn,
+  MenuHamburgerContainer,
+  MenuHamburgerDiv,
 } from "./styles";
 
 export const Header = () => {
   const { user_id, auth_token, dispatch } = useContext(AuthContext);
   const [menuDisplay, setMenuDisplay] = useState(false);
+  const [isMenuHambOn, setIsMenuHambOn] = useState(null);
 
   const handleMenu = () => {
     return setMenuDisplay(!menuDisplay);
+  };
+
+  const handleMenuHamb = () => {
+    setIsMenuHambOn(!isMenuHambOn);
+
+    if (!isMenuHambOn) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
   };
 
   return (
@@ -37,12 +50,27 @@ export const Header = () => {
         <LogoLink to="/" onClick={() => setMenuDisplay(false)}>
           <Logo src={LogoImg} alt="The Blog logo" />
         </LogoLink>
-        <MenuContainer>
+        <MenuHamburgerContainer onClick={handleMenuHamb}>
+          <MenuHamburgerDiv className={isMenuHambOn && "on"}></MenuHamburgerDiv>
+          <MenuHamburgerDiv className={isMenuHambOn && "on"}></MenuHamburgerDiv>
+          <MenuHamburgerDiv className={isMenuHambOn && "on"}></MenuHamburgerDiv>
+        </MenuHamburgerContainer>
+        <MenuContainer className={isMenuHambOn ? "on" : ""}>
           <MenuUl>
-            <MenuLi onClick={() => setMenuDisplay(false)}>
+            <MenuLi
+              onClick={() => {
+                setMenuDisplay(false);
+                setIsMenuHambOn(!isMenuHambOn);
+              }}
+            >
               <MenuLink to="/">Home</MenuLink>
             </MenuLi>
-            <MenuLi onClick={() => setMenuDisplay(false)}>
+            <MenuLi
+              onClick={() => {
+                setMenuDisplay(false);
+                setIsMenuHambOn(!isMenuHambOn);
+              }}
+            >
               <MenuLink to="/posts">Posts</MenuLink>
             </MenuLi>
             <MenuLi onClick={handleMenu} style={{ position: "relative" }}>
@@ -65,11 +93,21 @@ export const Header = () => {
                 </MenuCategoriesLi>
               </MenuCategories>
             </MenuLi>
-            <MenuLi onClick={() => setMenuDisplay(false)}>
+            <MenuLi
+              onClick={() => {
+                setMenuDisplay(false);
+                setIsMenuHambOn(!isMenuHambOn);
+              }}
+            >
               <MenuLink to="/about">Sobre</MenuLink>
             </MenuLi>
             {auth_token && user_id && (
-              <MenuLi onClick={() => setMenuDisplay(false)}>
+              <MenuLi
+                onClick={() => {
+                  setMenuDisplay(false);
+                  setIsMenuHambOn(!isMenuHambOn);
+                }}
+              >
                 <MenuLink to="/painel">Criar Post</MenuLink>
               </MenuLi>
             )}

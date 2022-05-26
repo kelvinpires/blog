@@ -26,4 +26,15 @@ export const GlobalStyles = createGlobalStyle`
         --green: #4fff4b;
         --text-color: #1e1e26;
     }
+    
+    
+    html {
+        font-size: 50%;
+    }
+    @media screen and (max-width: 886px) {
+        html {
+            font-size: 30%;
+        }
+    }
+    
 `;

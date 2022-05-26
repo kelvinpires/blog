@@ -5,6 +5,9 @@ export const AllPostsContainer = styled.main`
   flex-direction: column;
   padding: 6rem 13rem;
   gap: 3rem;
+  @media screen and (max-width: 425px) {
+    padding: 6rem 5rem;
+  }
 `;
 
 export const AllPostsContent = styled.div`
@@ -19,6 +22,9 @@ export const AllPostsImageContent = styled.div`
   transition: all 0.2s ease-in-out;
   &:hover {
     filter: grayscale(0.6);
+  }
+  @media screen and (max-width: 425px) {
+    width: 60rem;
   }
 `;
 
@@ -46,4 +52,7 @@ export const Separator = styled.div`
   width: 80%;
   background-color: var(--button-bg);
   margin-top: 2rem;
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
 `;

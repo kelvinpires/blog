@@ -9,7 +9,23 @@ export const HomePostsContainer = styled.section`
   gap: 6rem 5rem;
   background-color: var(--light-purple);
   padding: 6rem 13rem;
-  grid-template-columns: 50%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  @media screen and (max-width: 890px) {
+    grid-template-areas:
+      "viewed viewed"
+      "newpost newpost"
+      "carousel carousel";
+  }
+  @media screen and (max-width: 540px) {
+    grid-template-areas:
+      "viewed"
+      "newpost"
+      "carousel";
+  }
+
+  @media screen and (max-width: 1100px) {
+    padding: 6rem 5rem;
+  }
 `;
 
 export const SeeMoreLink = styled(Link)`

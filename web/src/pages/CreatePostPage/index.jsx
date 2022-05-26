@@ -18,6 +18,7 @@ import { storage } from "../../services/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { createPost } from "../../context/PostContext/apiCalls";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
+import { getUserInfo } from "../../context/AuthContext/apiCalls";
 
 export const CreatePostPage = () => {
   const [image, setImage] = useState("");
@@ -31,7 +32,8 @@ export const CreatePostPage = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const { auth_token } = useContext(AuthContext);
+  const { auth_token, user_id } = useContext(AuthContext);
+  const [createdBy, setCreatedBy] = useState({});
 
   const upload = (items) => {
     items.forEach((item) => {
@@ -39,7 +41,7 @@ export const CreatePostPage = () => {
         try {
           const storageRef = ref(
             storage,
-            `${item.label}/${new Date().getTime() + item.file.name}`
+            `${item.label}/${user_id + "-" + item.file.name}`
           );
           const uploadTask = uploadBytesResumable(storageRef, item.file);
 
@@ -74,13 +76,14 @@ export const CreatePostPage = () => {
       { file: image, label: "image" },
       { file: video, label: "video" },
     ]);
+    getUserInfo(user_id, auth_token, setCreatedBy);
   };
 
   const submitPost = (e) => {
     e.preventDefault();
     createPost(
       auth_token,
-      { title, text, ...files },
+      { title, text, ...files, createdBy },
       setPostId,
       setError,
       setSuccess

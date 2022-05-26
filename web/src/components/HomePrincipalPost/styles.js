@@ -6,6 +6,9 @@ export const MainContainer = styled.main`
   padding: 3rem 10rem;
   gap: 6rem;
   background-color: var(--purple-bg);
+  @media screen and (max-width: 767px) {
+    padding: 3rem 5rem;
+  }
 `;
 
 export const MainTextContainer = styled.div`
@@ -14,6 +17,9 @@ export const MainTextContainer = styled.div`
   justify-content: flex-start;
   gap: 2rem;
   max-width: 50%;
+  @media screen and (max-width: 767px) {
+    max-width: 40%;
+  }
 `;
 
 export const MainTextTitle = styled.h1`

@@ -8,6 +8,9 @@ export const PostPageContainer = styled.main`
   align-items: center;
   gap: 2rem;
   background-color: var(--light-purple);
+  @media screen and (max-width: 425px) {
+    padding: 6rem 10rem;
+  }
 `;
 
 export const PostPageContent = styled.article`
@@ -40,6 +43,34 @@ export const PostDataContent = styled.div`
   display: flex;
   align-items: center;
   gap: 5rem;
+`;
+
+export const UserContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const UserImageContent = styled.div`
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 0.4rem solid var(--button-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const UserImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const UserName = styled.h3`
+  font-family: "Roboto", sans-serif;
+  color: var(--purple-bg);
+  font-size: 2rem;
 `;
 
 export const PostText = styled.p`

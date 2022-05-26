@@ -8,11 +8,15 @@ export const FooterContainer = styled.footer`
   padding: 4rem 13rem;
   background-color: var(--purple-bg);
   position: absolute;
-  bottom: -10rem;
+  bottom: auto;
   width: 100%;
 `;
 
-export const LogoHome = styled.img``;
+export const LogoHome = styled.img`
+  @media screen and (max-width: 890px) {
+    width: 15rem;
+  }
+`;
 
 export const AllRights = styled.p`
   font-family: "Roboto", sans-serif;
@@ -32,5 +36,9 @@ export const BackTop = styled.button`
 
   &:hover {
     filter: opacity(0.8);
+  }
+  @media screen and (max-width: 425px) {
+    width: 8rem;
+    height: 8rem;
   }
 `;
