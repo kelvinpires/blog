@@ -82,7 +82,6 @@ module.exports = {
 
       const newPost = await Post.create({
         ...req.body,
-        userId: req.user.id,
       });
 
       try {

@@ -21,8 +21,8 @@ const PostSchema = new mongoose.Schema(
       required: false,
       default: null,
     },
-    userId: {
-      type: String,
+    createdBy: {
+      type: Object,
       required: true,
     },
   },
